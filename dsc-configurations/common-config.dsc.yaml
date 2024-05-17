@@ -27,8 +27,3 @@ properties:
        allowPrerelease: true
      settings:
        id: Git.Git
-   - resource: Microsoft.WinGet.DSC/WinGetPackage
-     directives:
-       allowPrerelease: true
-     settings:
-       id: Github.GithubDesktop
