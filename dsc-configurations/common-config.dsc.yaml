@@ -23,9 +23,16 @@ properties:
    ### Install Git
    ### -------------------------------------
    - resource: Microsoft.WinGet.DSC/WinGetPackage
+     directives:
+       allowPrerelease: true
+     settings:
+       id: Git.Git
+   ### Install Git
+   ### -------------------------------------
+   - resource: Microsoft.WinGet.DSC/WinGetPackage
      id: git
      directives:
        description: Install Git
        allowPrerelease: true
      settings:
-       id: Git.Git
+       id: Microsoft.VisualStudioCode
