@@ -31,9 +31,4 @@ properties:
      directives:
        allowPrerelease: true
      settings:
-       id: Git.Git
-   - resource: Microsoft.WinGet.DSC/WinGetPackage
-     directives:
-       allowPrerelease: true
-     settings:
-      id:  Microsoft.AzureCLI
+       id: Github.GithubDesktop
