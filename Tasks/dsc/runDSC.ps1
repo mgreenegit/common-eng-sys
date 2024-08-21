@@ -99,8 +99,15 @@ if (-not (Test-DSCInstalled)) {
     Install-DSC -path (Get-UserContext)
 }
 
+
+$userContext = Get-UserContext
+if ('NT AUTHORITY\SYSTEM' -eq $userContext) {
+    $pathType = 'system'
+} else {
+    $pathType = 'user'
+}
 # Get path to dsc.exe
-$dsc = Join-Path (Get-InstallLocation -path (Get-UserContext)) 'dsc.exe'
+$dsc = Join-Path (Get-InstallLocation -path $userContext ) 'dsc.exe'
 
 # Run DSC
 if ( 'inline' -ne $configurationPath -and (-not [string]::IsNullorEmpty($configurationPath)) ) {
