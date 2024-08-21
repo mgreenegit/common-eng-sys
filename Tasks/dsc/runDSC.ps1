@@ -103,13 +103,13 @@ if (-not (Test-DSCInstalled)) {
 $dsc = Join-Path (Get-InstallLocation -path (Get-UserContext)) 'dsc.exe'
 
 # Run DSC
-if ( 'inline' -ne $configurationPath && -not [string]::IsNullorEmpty($configurationPath) ) {
+if ( 'inline' -ne $configurationPath -and (-not [string]::IsNullorEmpty($configurationPath)) ) {
     $pathType = Get-PathType -path $configurationPath
     switch ($pathType) {
         'uri' { $configuration = Invoke-WebRequest -Uri $configurationPath -UseBasicParsing | % content }
         'file' { $configuration = Get-Content $configurationPath }
     }
-} elseif ('inline' -eq $configurationPath && -not [string]::IsNullorEmpty($inlineConfiguration))  {
+} elseif ('inline' -eq $configurationPath -and (-not [string]::IsNullorEmpty($inlineConfiguration)))  {
     $configuration = $inlineConfiguration
 } else {
     throw "No configuration provided"
